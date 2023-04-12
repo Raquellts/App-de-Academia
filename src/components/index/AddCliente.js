@@ -5,7 +5,7 @@ import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ThemeContext from "../../contexts/ThemeContext";
 
-function AddUser() {
+function AddCliente() {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -37,7 +37,7 @@ function AddUser() {
           </Col>
         </Row>
         <Row>
-          <Col style={{ textAlign: "start" }} sm={4}>
+          <Col style={{ textAlign: "start" }} sm={3}>
             <label> Idade </label>
             <Form.Group className="mb-3" controlId="Idade">
               <Form.Control
@@ -47,7 +47,7 @@ function AddUser() {
               />
             </Form.Group>
           </Col>
-          <Col style={{ textAlign: "start" }} sm={4}>
+          <Col style={{ textAlign: "start" }} sm={3}>
             <label> Altura </label>
             <Form.Group className="mb-3" controlId="Altura">
               <Form.Control
@@ -57,8 +57,18 @@ function AddUser() {
               />
             </Form.Group>
           </Col>
-          <Col style={{ textAlign: "start" }} sm={4}>
-            <label> Peso </label>
+          <Col style={{ textAlign: "start" }} sm={3}>
+            <label> Peso inicial </label>
+            <Form.Group className="mb-3" controlId="Peso">
+              <Form.Control
+                className={`selecionar ${theme}`}
+                type="number"
+                placeholder="..."
+              />
+            </Form.Group>
+          </Col>
+          <Col style={{ textAlign: "start" }} sm={3}>
+            <label> Peso atual </label>
             <Form.Group className="mb-3" controlId="Peso">
               <Form.Control
                 className={`selecionar ${theme}`}
@@ -87,4 +97,4 @@ function AddUser() {
   );
 }
 
-export default AddUser;
+export default AddCliente;

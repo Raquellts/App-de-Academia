@@ -174,7 +174,7 @@ function AddForm() {
                 </Col>
 
                 <Col style={{ textAlign: "start" }} xs={3}>
-                  <label> Movimentos </label>
+                  <label> Series </label>
                   <Form.Select
                     defaultValue=""
                     onChange={handleOptionChange}

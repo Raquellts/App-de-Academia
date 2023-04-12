@@ -4,19 +4,21 @@ import { Tab, Row, Col } from "react-bootstrap";
 import React, { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 
-export const getStaticProps = async () => {
+export async function getStaticProps(context) {
   const res = await fetch("http://192.168.1.104:5000");
   const clientes = await res.json();
+
   return {
     props: {
       clientes,
     },
-    revalidate: 10,
+    revalidate: 30,
   };
-};
+}
 
-function clientlist() {
+function clientlist({ clientes }) {
   const { theme } = useContext(ThemeContext);
+  const data = clientes;
 
   return (
     <Tab.Container>
@@ -25,7 +27,10 @@ function clientlist() {
           <TabNav at={true} />
         </Col>
         <Col>
-          <ClienteLista />
+          {data &&
+            data.map((client, index) => {
+              return <ClienteLista name={client.nome} key={index} />;
+            })}
         </Col>
       </Row>
     </Tab.Container>
