@@ -2,8 +2,9 @@ import TabNav from "../components/index/Tabnav";
 import { Tab, Row, Col, Container } from "react-bootstrap";
 import React, { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
+import Link from "next/link";
 
-function erro() {
+function Erro() {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -23,12 +24,14 @@ function erro() {
             </Row>
 
             <Row>
-              <button
-                type="button"
-                className={`botao caixa ${theme} botao-voltar`}
-              >
-                Voltar
-              </button>
+              <Link href="/">
+                <button
+                  type="button"
+                  className={`botao caixa ${theme} botao-voltar`}
+                >
+                  Voltar
+                </button>
+              </Link>
             </Row>
           </Container>
         </Col>
@@ -37,4 +40,4 @@ function erro() {
   );
 }
 
-export default erro;
+export default Erro;

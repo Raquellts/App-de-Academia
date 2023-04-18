@@ -1,12 +1,36 @@
-import TabNav from "../../components/index/Tabnav";
+import TabNav from "../../../components/index/Tabnav";
 import { Tab, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext } from "react";
-import ThemeContext from "../../contexts/ThemeContext";
+import ThemeContext from "../../../contexts/ThemeContext";
 
-function App() {
+export const getStaticPaths = async ()=>{
+  const res = await fetch("http://192.168.1.104:5000")
+  const clients = await res.json()
+
+  const paths = clients.map((client) => ({
+    params: { id: client.id.toString() }, // Certifique-se de converter o ID para string
+  }));
+  
+  return{
+    paths,
+    fallback: false
+  }
+
+}
+
+export const getStaticProps = async ({params}) =>{
+const res = await fetch(`http://192.168.1.104:5000/fichas/${params.id}`)
+const data = await res.json()
+return{
+    props:data
+  
+}
+}
+
+
+function index({data}) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -67,4 +91,4 @@ function App() {
   );
 }
 
-export default App;
+export default index;
