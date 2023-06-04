@@ -23,7 +23,7 @@ function AddCliente() {
               <Form.Control
                 className={`selecionar ${theme}`}
                 type="name"
-                placeholder="..."
+                placeholder=".."
               />
             </Form.Group>
           </Col>
